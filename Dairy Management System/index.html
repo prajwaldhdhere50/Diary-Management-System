@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Farm Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .modal-header {
+            background-color: #5FCF80;
+        }
+        .mybutton {
+            border-radius: 0px 40px 40px 0px;
+            background-color: #5FCF80;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 10px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .mybutton span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        .mybutton span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        .mybutton:hover span {
+            padding-right: 25px;
+        }
+        .mybutton:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#home">Dairy Farm Management</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#contact-us">Contact Us</a></li>
+                    <li><a href="#" data-target="#login" data-toggle="modal">Log in</a></li>
+                    <li><a href="#" data-target="#register" data-toggle="modal">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="container">
+        <h1>Welcome to Dairy Farm Management</h1>
+        <p>Your one-stop solution for managing dairy farm products and operations.</p>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="container">
+        <h2>Our Dairy Products</h2>
+        <div class="product">
+            <img src="C:\Users\S61101\Downloads\fresh-cow-milk-500x500.webp" alt="Fresh Cow Milk" />
+            <h3>Fresh Cow Milk</h3>
+            <p class="price">₹50</p>
+            <button class="mybutton"><span>Add to Cart</span></button>
+        </div>
+        <div class="product">
+            <img src="C:\Users\S61101\Downloads\milk-cottage-cheese-sour-cream-260nw-414901216.webp" alt="Goat Milk" />
+            <h3>Goat Milk</h3>
+            <p class="price">₹60</p>
+            <button class="mybutton"><span>Add to Cart</span></button>
+        </div>
+        <div class="product">
+            <img src="C:\Users\S61101\Downloads\buffalo-milk-1667795142-6612778.jpeg" alt="Buffalo Milk" />
+            <h3>Buffalo Milk</h3>
+            <p class="price">₹70</p>
+            <button class="mybutton"><span>Add to Cart</span></button>
+        </div>
+        <div class="product">
+            <img src="C:\Users\S61101\Downloads\chesse.jpg" alt="Cheddar Cheese" />
+            <h3>Cheddar Cheese</h3>
+            <p class="price">₹300</p>
+            <button class="mybutton"><span>Add to Cart</span></button>
+        </div>
+        <div class="product">
+            <img src="C:\Users\S61101\Downloads\panner.jpg" alt="Paneer" />
+            <h3>Paneer </h3>
+            <p class="price">₹400</p>
+            <button class="mybutton"> <span>Add to Cart</span></button>
+            </div>
+            </section>
+                <!-- About Us Section -->
+    <section id="about-us" class="container">
+        <h2>About Us</h2>
+        <div class="about-info">
+            <p>Welcome to our Dairy Farm! We are dedicated to providing the highest quality dairy products to our customers. Our farm is located in the heart of the countryside, where we raise our cows with care and respect.</p>
+            <p>Our mission is to deliver fresh, nutritious, and delicious dairy products while maintaining sustainable farming practices. We believe in the importance of animal welfare and environmental stewardship.</p>
+            <p>With a commitment to quality and customer satisfaction, we strive to be your trusted source for all your dairy needs. Thank you for choosing us!</p>
+        </div>
+    </section>
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p><strong>Address:</strong> 123 Dairy Lane, Milk City, Country</p>
+            <p><strong>Phone:</strong> +1 (234) 567-8901</p>
+            <p><strong>Email:</strong> info@dairyfarm.com</p>
+        </div>
+    </section>
+   <!-- Registration Form -->
+<div id="registerForm" class="form-container">
+    <h3>Register</h3>
+    <input type="text" id="regName" placeholder="Name" required>
+    <input type="email" id="regEmail" placeholder="Email" required>
+    <input type="password" id="regPassword" placeholder="Password" required>
+    <button onclick="registerUser ()">Register</button>
+</div>
+
+<!-- Login Form -->
+<div id="loginForm" class="form-container hidden">
+    <h3>Login</h3>
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="loginUser ()">Login</button>
+    <p id="loginError" style="color: red;"></p>
+</div>
+
+<script>
+    // Function to toggle between login and registration forms
+    function toggleForms() {
+        const registerForm = document.getElementById('registerForm');
+        const loginForm = document.getElementById('loginForm');
+        registerForm.classList.toggle('hidden');
+        loginForm.classList.toggle('hidden');
+    }
+
+    // Function to handle user registration
+    function registerUser () {
+        const name = document.getElementById('regName').value;
+        const email = document.getElementById('regEmail').value;
+        const password = document.getElementById('regPassword').value;
+
+        // Here you would typically send this data to your server
+        console.log('Registering user:', { name, email, password });
+        alert('Registration successful!'); // Placeholder for actual registration logic
+    }
+
+    // Function to handle user login
+    function loginUser () {
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        // Here you would typically send this data to your server for validation
+        console.log('Logging in user:', { email, password });
+        // Placeholder for actual login logic
+        if (email === "test@example.com" && password === "password") {
+            alert('Login successful!'); // Placeholder for successful login
+        } else {
+            document.getElementById('loginError').innerText = 'Invalid email or password.';
+        }
+    }
+</script>
+
+<style>
+    .form-container {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+        </body>
+</html>
